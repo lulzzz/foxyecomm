@@ -5,9 +5,9 @@
 Includes the following services 
 
 <ul>
-<li>Inventory Service</li>
-<li>Brand Service</li>
-<li>Category Service</li>
+<li>Inventory Service(in progress)</li>
+<li>Brand Service(to be added)</li>
+<li>Category Service(to be added)</li>
 <li>Basket Service(to be added)</li>
 <li>Order Service(to be added</li>
 <li>Transaction Service(to be added</li>
