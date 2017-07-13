@@ -26,6 +26,7 @@ Rabbitmq is used For lightweight message queue.RabbitMQ manage commands and even
 <li>PostgreSql</li>
 <li>MongoDb</li>
 <li>RabbitMQ</li>
+<li>Concul for service discovery</li>
 <li>Redis(to be added for caching)</li>
 <li>Elastic Search(to be added for searching)</li>
 </ul>
