@@ -8,12 +8,11 @@ Includes the following services
 <li>Inventory Service</li>
 <li>Brand Service</li>
 <li>Category Service</li>
-<li>Basket Service</li>
-<li>Order Service</li>
-<li>Transaction Service</li>
-<li>Notification Service</li>
-<li>Image Service</li>
-<li>Slider Service</li>
+<li>Basket Service(to be added)</li>
+<li>Order Service(to be added</li>
+<li>Transaction Service(to be added</li>
+<li>Notification Service(to be added</li>
+<li>Image Service(to be added</li>
 </ul>
 
 <h2>Architecture</h2>
