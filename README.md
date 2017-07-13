@@ -1,5 +1,5 @@
 # foxyecomm
-This project contains basic concepts of ecommerce and this project demonstrates the implementation of domain driven development and cqrs.On the other hand i have been used  microservice architectural patterns.I will continue to develop this application in my spare time.
+This project contains basic concepts of ecommerce and demonstrates the implementation of domain driven development and cqrs.On the other hand i have been used  microservice architectural patterns.I will continue to develop this application in my spare time.
  
 
 <h2>Prerequisites</h2>
