@@ -1,4 +1,5 @@
 # foxyecomm
+<img src="http://www.freeiconspng.com/uploads/fox-icon-png-17.png"/>
 This project contains basic concepts of ecommerce and demonstrates the implementation of domain driven development and cqrs.On the other hand i have been used  microservice architectural patterns.I will continue to develop this application in my spare time.
  
 
