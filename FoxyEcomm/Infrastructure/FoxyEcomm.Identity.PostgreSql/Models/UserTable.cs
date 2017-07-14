@@ -13,10 +13,10 @@ namespace FoxyEcomm.Identity.PostgreSql.Models
             _database = database;
         }
 
-        public string Getusername(string memberid)
+        public string Getusername(string subscriberid)
         {
-            string commandText = "SELECT \"username\" FROM \"members\" WHERE \"id\" = @id";
-            Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@id", memberid } };
+            string commandText = "SELECT \"username\" FROM \"subscribers\" WHERE \"id\" = @id";
+            Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@id", subscriberid } };
 
             return _database.GetStrValue(commandText, parameters);
         }
@@ -26,7 +26,7 @@ namespace FoxyEcomm.Identity.PostgreSql.Models
             if (username != null)
                 username = username.ToLower();
 
-            string commandText = "SELECT \"id\" FROM \"members\" WHERE LOWER(\"username\") = @name";
+            string commandText = "SELECT \"id\" FROM \"subscribers\" WHERE LOWER(\"username\") = @name";
             Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@name", username } };
 
             return _database.GetStrValue(commandText, parameters);
@@ -36,7 +36,7 @@ namespace FoxyEcomm.Identity.PostgreSql.Models
         {
             List<TUser> users = new List<TUser>();
 
-            string commandText = "SELECT * FROM \"members\"";
+            string commandText = "SELECT * FROM \"subscribers\"";
             var rows = _database.Query(commandText, new Dictionary<string, object>());
 
             foreach (var row in rows)
@@ -54,11 +54,11 @@ namespace FoxyEcomm.Identity.PostgreSql.Models
             return users;
         }
 
-        public TUser GetUserByid(string memberid)
+        public TUser GetUserByid(string subscriberid)
         {
             TUser user = null;
-            string commandText = "SELECT * FROM \"members\" WHERE \"id\" = @id";
-            Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@id", memberid } };
+            string commandText = "SELECT * FROM \"subscribers\" WHERE \"id\" = @id";
+            Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@id", subscriberid } };
 
             var rows = _database.Query(commandText, parameters);
             if (rows != null && rows.Count == 1)
@@ -82,7 +82,7 @@ namespace FoxyEcomm.Identity.PostgreSql.Models
                 username = username.ToLower();
 
             List<TUser> users = new List<TUser>();
-            string commandText = "SELECT * FROM \"members\" WHERE LOWER(\"username\") = @name";
+            string commandText = "SELECT * FROM \"subscribers\" WHERE LOWER(\"username\") = @name";
             Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@name", username } };
 
             var rows = _database.Query(commandText, parameters);
@@ -107,7 +107,7 @@ namespace FoxyEcomm.Identity.PostgreSql.Models
                 email = email.ToLower();
 
             List<TUser> users = new List<TUser>();
-            string commandText = "SELECT * FROM \"members\" WHERE LOWER(\"email\") = @email";
+            string commandText = "SELECT * FROM \"subscribers\" WHERE LOWER(\"email\") = @email";
             Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@email", email } };
 
             var rows = _database.Query(commandText, parameters);
@@ -126,11 +126,11 @@ namespace FoxyEcomm.Identity.PostgreSql.Models
             return users;
         }
 
-        public string Getpasswordhash(string memberid)
+        public string Getpasswordhash(string subscriberid)
         {
-            string commandText = "SELECT \"passwordhash\" FROM \"members\" WHERE \"id\" = @id";
+            string commandText = "SELECT \"passwordhash\" FROM \"subscribers\" WHERE \"id\" = @id";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters.Add("@id", memberid);
+            parameters.Add("@id", subscriberid);
 
             var passHash = _database.GetStrValue(commandText, parameters);
             if(string.IsNullOrEmpty(passHash))
@@ -140,11 +140,11 @@ namespace FoxyEcomm.Identity.PostgreSql.Models
 
             return passHash;
         }
-        public string GetClientId(string memberid)
+        public string GetClientId(string subscriberid)
         {
-            string commandText = "SELECT \"client_id\" FROM \"members\" WHERE \"id\" = @id";
+            string commandText = "SELECT \"client_id\" FROM \"subscribers\" WHERE \"id\" = @id";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters.Add("@id", memberid);
+            parameters.Add("@id", subscriberid);
 
             var clientId = _database.GetStrValue(commandText, parameters);
             if (string.IsNullOrEmpty(clientId))
@@ -154,11 +154,11 @@ namespace FoxyEcomm.Identity.PostgreSql.Models
 
             return clientId;
         }
-        public string GetClientSecret(string memberid)
+        public string GetClientSecret(string subscriberid)
         {
-            string commandText = "SELECT \"client_secret\" FROM \"members\" WHERE \"id\" = @id";
+            string commandText = "SELECT \"client_secret\" FROM \"subscribers\" WHERE \"id\" = @id";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters.Add("@id", memberid);
+            parameters.Add("@id", subscriberid);
 
             var clientSecret = _database.GetStrValue(commandText, parameters);
             if (string.IsNullOrEmpty(clientSecret))
@@ -169,20 +169,20 @@ namespace FoxyEcomm.Identity.PostgreSql.Models
             return clientSecret;
         }
 
-        public int Setpasswordhash(string memberid, string passwordhash)
+        public int Setpasswordhash(string subscriberid, string passwordhash)
         {
-            string commandText = "UPDATE \"members\" SET \"passwordhash\" = @pwdHash WHERE \"id\" = @id";
+            string commandText = "UPDATE \"subscribers\" SET \"passwordhash\" = @pwdHash WHERE \"id\" = @id";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@pwdHash", passwordhash);
-            parameters.Add("@id", memberid);
+            parameters.Add("@id", subscriberid);
 
             return _database.Execute(commandText, parameters);
         }
 
-        public string Getsecuritystamp(string memberid)
+        public string Getsecuritystamp(string subscriberid)
         {
-            string commandText = "SELECT \"securitystamp\" FROM \"members\" WHERE \"id\" = @id";
-            Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@id", memberid } };
+            string commandText = "SELECT \"securitystamp\" FROM \"subscribers\" WHERE \"id\" = @id";
+            Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@id", subscriberid } };
             var result = _database.GetStrValue(commandText, parameters);
 
             return result;
@@ -193,13 +193,13 @@ namespace FoxyEcomm.Identity.PostgreSql.Models
             var lowerCaseemail = user.Email == null ? null : user.Email.ToLower();
 
             string commandText = @"
-            INSERT INTO ""members""(""id"", 
+            INSERT INTO ""subscribers""(""id"", 
 ""username"", 
 ""passwordhash"", 
 ""securitystamp"", 
 ""email"", 
-""emailconfirmed"",""firstname"",""lastname"",""created"",""update_time"",""status"",""type"")
-            VALUES (@id, @name, @pwdHash, @SecStamp, @email, @emailconfirmed,@firstname,@lastname,@created,@update_time,@status,@type);";
+""emailconfirmed"")
+            VALUES (@id, @name, @pwdHash, @SecStamp, @email, @emailconfirmed);";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@name", user.UserName);
@@ -208,19 +208,14 @@ namespace FoxyEcomm.Identity.PostgreSql.Models
             parameters.Add("@SecStamp", user.SecurityStamp);
             parameters.Add("@email", user.Email);
             parameters.Add("@emailconfirmed", user.EmailConfirmed);
-            parameters.Add("@firstname", user.FirstName);
-            parameters.Add("@lastname", user.LastName);
-            parameters.Add("@created", user.Created);
-            parameters.Add("@update_time", user.UpdateTime);
-            parameters.Add("@status", user.Status);
             return _database.Execute(commandText, parameters);
         }
 
-        private int Delete(string memberid)
+        private int Delete(string subscriberid)
         {
-            string commandText = "DELETE FROM \"members\" WHERE \"id\" = @memberid";
+            string commandText = "DELETE FROM \"subscribers\" WHERE \"id\" = @subscriberid";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters.Add("@memberid", memberid);
+            parameters.Add("@subscriberid", subscriberid);
 
             return _database.Execute(commandText, parameters);
         }
@@ -234,13 +229,13 @@ namespace FoxyEcomm.Identity.PostgreSql.Models
         {
             var lowerCaseemail = user.Email == null ? null : user.Email.ToLower();
 
-            string commandText = "UPDATE \"members\" SET \"username\" = @username, \"passwordhash\" = @pswHash, \"securitystamp\" = @secStamp, \"email\"= @email, \"emailconfirmed\" = @emailconfirmed WHERE \"id\" = @memberid;";
+            string commandText = "UPDATE \"subscribers\" SET \"username\" = @username, \"passwordhash\" = @pswHash, \"securitystamp\" = @secStamp, \"email\"= @email, \"emailconfirmed\" = @emailconfirmed WHERE \"id\" = @subscriberid;";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@username", user.UserName);
             parameters.Add("@pswHash", user.PasswordHash);
             parameters.Add("@secStamp", user.SecurityStamp);
-            parameters.Add("@memberid", user.Id);
+            parameters.Add("@subscriberid", user.Id);
             parameters.Add("@email", user.Email);
             parameters.Add("@emailconfirmed", user.EmailConfirmed);
 

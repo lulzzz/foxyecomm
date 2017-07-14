@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Attributes\InlineEventHandlerAttribute.cs" />
     <Compile Include="Enumeration\EntityStatus.cs" />
+    <Compile Include="Enumeration\SubscriberType.cs" />
     <Compile Include="Exceptions\FoxyEcommConfigurationException.cs" />
     <Compile Include="Exceptions\FoxyEcommException.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />

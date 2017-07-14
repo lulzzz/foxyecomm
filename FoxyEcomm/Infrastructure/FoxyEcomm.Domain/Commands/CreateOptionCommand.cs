@@ -9,4 +9,4 @@ namespace FoxyEcomm.Domain.Commands
 
         public string Name { get; set; }
     }
-}
+} 

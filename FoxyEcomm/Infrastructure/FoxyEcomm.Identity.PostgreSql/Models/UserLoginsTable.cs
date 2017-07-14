@@ -14,38 +14,38 @@ namespace FoxyEcomm.Identity.PostgreSql.Models
 
         public int Delete(IdentityUser user, UserLoginInfo login)
         {
-            string commandText = "DELETE FROM \"memberlogins\" WHERE \"memberid\" = @memberid AND \"loginprovider\" = @loginprovider AND \"poviderkey\" = @poviderkey";
+            string commandText = "DELETE FROM \"subscriberlogins\" WHERE \"subscriberid\" = @subscriberid AND \"loginprovider\" = @loginprovider AND \"poviderkey\" = @poviderkey";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters.Add("memberid", user.Id);
+            parameters.Add("subscriberid", user.Id);
             parameters.Add("loginprovider", login.LoginProvider);
             parameters.Add("poviderkey", login.ProviderKey);
 
             return _database.Execute(commandText, parameters);
         }
 
-        public int Delete(string memberid)
+        public int Delete(string subscriberid)
         {
-            string commandText = "DELETE FROM \"memberlogins\" WHERE \"memberid\" = @memberid";
+            string commandText = "DELETE FROM \"subscriberlogins\" WHERE \"subscriberid\" = @subscriberid";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters.Add("memberid", memberid);
+            parameters.Add("subscriberid", subscriberid);
 
             return _database.Execute(commandText, parameters);
         }
 
         public int Insert(IdentityUser user, UserLoginInfo login)
         {
-            string commandText = "INSERT INTO \"memberlogins\" (\"loginprovider\", \"poviderkey\", \"memberid\") VALUES (@loginprovider, @poviderkey, @memberid)";
+            string commandText = "INSERT INTO \"subscriberlogins\" (\"loginprovider\", \"poviderkey\", \"subscriberid\") VALUES (@loginprovider, @poviderkey, @subscriberid)";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("loginprovider", login.LoginProvider);
             parameters.Add("poviderkey", login.ProviderKey);
-            parameters.Add("memberid", user.Id);
+            parameters.Add("subscriberid", user.Id);
 
             return _database.Execute(commandText, parameters);
         }
 
         public string FindUseridByLogin(UserLoginInfo userLogin)
         {
-            string commandText = "SELECT \"memberid\" FROM \"memberlogins\" WHERE \"loginprovider\" = @loginprovider AND \"poviderkey\" = @poviderkey";
+            string commandText = "SELECT \"subscriberid\" FROM \"subscriberlogins\" WHERE \"loginprovider\" = @loginprovider AND \"poviderkey\" = @poviderkey";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("loginprovider", userLogin.LoginProvider);
             parameters.Add("poviderkey", userLogin.ProviderKey);
@@ -53,11 +53,11 @@ namespace FoxyEcomm.Identity.PostgreSql.Models
             return _database.GetStrValue(commandText, parameters);
         }
 
-        public List<UserLoginInfo> FindByUserid(string memberid)
+        public List<UserLoginInfo> FindByUserid(string subscriberid)
         {
             List<UserLoginInfo> logins = new List<UserLoginInfo>();
-            string commandText = "SELECT * FROM \"memberlogins\" WHERE \"memberid\" = @memberid";
-            Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@memberid", memberid } };
+            string commandText = "SELECT * FROM \"subscriberlogins\" WHERE \"subscriberid\" = @subscriberid";
+            Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@subscriberid", subscriberid } };
 
             var rows = _database.Query(commandText, parameters);
             foreach (var row in rows)

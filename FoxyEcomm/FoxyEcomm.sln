@@ -42,6 +42,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{298D
 		inventory.sql = inventory.sql
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebUI", "WebUI", "{794FD911-24D5-4664-984A-5ED54ABA85BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoxyEcomm.Services.Identity", "Services\FoxyEcomm.Services.Identity\FoxyEcomm.Services.Identity.csproj", "{F8791EAC-CB85-4B32-ABB7-6BEBC9629BF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,6 +92,10 @@ Global
 		{8A99C9C0-6B0E-4A0A-BABB-96FF3C7BE329}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A99C9C0-6B0E-4A0A-BABB-96FF3C7BE329}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A99C9C0-6B0E-4A0A-BABB-96FF3C7BE329}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8791EAC-CB85-4B32-ABB7-6BEBC9629BF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8791EAC-CB85-4B32-ABB7-6BEBC9629BF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8791EAC-CB85-4B32-ABB7-6BEBC9629BF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8791EAC-CB85-4B32-ABB7-6BEBC9629BF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -108,5 +116,6 @@ Global
 		{6BC50BAF-D5B3-401A-83BC-F2CFCDD18F31} = {02FF0FF5-3A96-4339-B18F-CE3D1E407D79}
 		{8A99C9C0-6B0E-4A0A-BABB-96FF3C7BE329} = {02FF0FF5-3A96-4339-B18F-CE3D1E407D79}
 		{298D1CE3-9748-4BA9-B527-3AD7AB537631} = {9195C643-B168-47F5-B52A-B2BF8D6049AF}
+		{F8791EAC-CB85-4B32-ABB7-6BEBC9629BF4} = {02FF0FF5-3A96-4339-B18F-CE3D1E407D79}
 	EndGlobalSection
 EndGlobal
